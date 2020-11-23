@@ -88,10 +88,52 @@ override fun onConfigurationChanged(newConfig: Configuration) {
 
 ### Changing the player configuration
 
-TODO:  
--adding request header to streamaccess
--changing autoplay behavior
--add heartbeat
+The player fetches its configuration from the URL that is passed in the setUp() call. The configuration determines the looks and the behavior of the player, however if you wish to change any of this behavior or need to add necessary information to the player configuration you can do so by implementing AVVConfigAdaptationCallback and adding it to the player.setup() call
+```
+player.setup(config, object : AVVConfigAdaptationCallback() {})
+```
+
+* **Adding request headers to streamaccess**
+```
+player.setUp(config, object : AVVConfigAdaptationCallback() {
+            override fun adaptConfig(config: AVVConfig) {
+                ...
+                config.streamUrlProviderInfo.requestData = AVVPostRequestData(mapOf(Pair("authorization", "your auth token")))
+ 
+                ...
+            }
+}
+```
+
+* **Changing autoplay behavior**
+```
+player.setUp(config, object : AVVConfigAdaptationCallback() {
+             
+            override fun adaptConfig(config: AVVConfig) {
+                ...
+                config.streamMetaData.autoPlay = true
+                ...
+            }
+             
+        })
+```
+* **Add heartbeat**
+```
+player.setUp(config, object : AVVConfigAdaptationCallback() {
+             
+            override fun adaptConfig(config: AVVConfig) {
+                ...
+                config.heartbeat = AVVHeartbeat.Builder()
+                    .enabled(true)
+                    .time(30) //seconds
+                    .ticket("your heartbeat ticket")
+                    .validationPath("https://yourvalidation.com/validation")
+                    .build()
+                ...
+            }
+             
+        })
+```
 
 ------
 
