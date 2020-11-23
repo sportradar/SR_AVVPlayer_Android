@@ -33,3 +33,19 @@ AVVSettings.instance.initLicence(this,"your_licence_key",
             override fun onLicenceValidated(valid: Boolean) {}
         });
 ```
+
+### Creating the AVVPlayer instance
+
+**1. Instantiate the Player**
+
+```
+val player = AVVPlayerBuilder(context) //your Activity's context
+            .setPlayerContainer(playerContainer) //the viewgroup that contains the player
+            .build()
+```
+
+**2. Start the video passing a Video Configuration to the player**
+
+```
+player.setUp(AVVConfigUrl("https://www.badmintoneurope.tv/api/v2/content/92179/player-setting"))
+```
