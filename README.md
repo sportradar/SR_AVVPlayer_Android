@@ -107,28 +107,67 @@ TODO:
 ## Customizing UI
 ------
 ### Customize Error Overlay
+```
+class MyErrorOverlay : AVVErrorOverlayDelegate {
+    override fun onCreateErrorView(parent: ViewGroup, error: AVVError): View {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val view = layoutInflater.inflate(R.layout.my_error_layout, parent, false)
+ 
+        // display the error data contained in the AVVError as you like.
+        return view
+    }
+}
+```
+```
+val player = AVVPlayerBuilder(activity)
+            .setPlayerContainer(playerContainer)
+            .setCustomErrorOverlay(MyErrorOverlay())
+            .build()
+```
 
-TODO:
 
 ## Chromecast
 ------
 ### Create CastOptionsProvider
-
-TODO:
+```
+class DemoCastOptionsProvider: AVVCastOptionsProvider() {
+    override fun getReceiverApplicationId(context: Context): String {
+        return "YOUR_CAST_RECEIVER_ID"
+    }
+}
+```
 
 ### Add the CastOptionsProvider to your AndroidManifest.xml
-
-TODO:
+```
+    <application>
+        ...
+        <meta-data
+            android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"
+            android:value="ag.sportradar.avvplayerdemo.DemoCastOptionsProvider"
+            tools:replace="android:value" />
+ 
+    </application>
+```
 
 ### Initiate CastContext
-
-TODO:
+```
+    class MainActivity : AppCompatActivity() {
+        override fun onCreate(savedInstanceState: Bundle?) {
+        ...
+        CastContext.getSharedInstance(this)
+        ...
+    }
+```
 
 ### (Optional) Add a MiniController to your layout
+```
+    <fragment
+        android:id="@+id/miniControllerFragment"
+        class="ag.sportradar.avvplayer.player.chromecast.widgets.AVVDefaultCastMiniController"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+```
 
-TODO:
-
-===================
 #  Changelog
 ------
 
