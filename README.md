@@ -47,5 +47,5 @@ val player = AVVPlayerBuilder(context) //your Activity's context
 **2. Start the video passing a Video Configuration to the player**
 
 ```
-player.setUp(AVVConfigUrl("https://www.badmintoneurope.tv/api/v2/content/92179/player-setting"))
+player.setup(AVVConfigUrl("https://www.badmintoneurope.tv/api/v2/content/92179/player-setting"))
 ```
