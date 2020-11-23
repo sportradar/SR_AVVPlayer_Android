@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         /*README.md Instantiate the Player */
         val player = AVVPlayerBuilder(this)
+            .setPlayerContainer(findViewById(R.id.playerContainer))
             .build()
 
         /*README.md Start the video passing a Video Configuration to the player */
