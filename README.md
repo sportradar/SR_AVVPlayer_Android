@@ -71,4 +71,28 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
     }
 ...
-}```
+}
+```
+
+### Handle orientation change
+
+In order for the AVVPlayer to continue playback through orientation changes you need to enable configChanges in the Activity that holds the player.
+
+**1. Add the following line to your activtiy in the AndroidManifest.xml**
+
+```
+<activity
+           ..
+       android:configChanges="orientation|screenSize|screenLayout"
+           ...
+</activity>
+```
+
+**2. Override onConfigurationChanged in your Activtiy/Fragment that holds the player**
+
+```
+override fun onConfigurationChanged(newConfig: Configuration) {
+        player.onConfigurationChanged(newConfig)
+        super.onConfigurationChanged(newConfig)
+    }
+```

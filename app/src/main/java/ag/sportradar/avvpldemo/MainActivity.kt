@@ -6,6 +6,7 @@ import ag.sportradar.avvplayer.player.AVVPlayer
 import ag.sportradar.avvplayer.player.AVVPlayerBuilder
 import ag.sportradar.avvplayer.player.licencing.AVVLicenceCheckListener
 import ag.sportradar.avvplayer.player.settings.AVVSettings
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         player.setup(AVVConfigUrl("https://www.badmintoneurope.tv/api/v2/content/92179/player-setting"))
     }
 
+    //region README.md Handle lifecycle events
     override fun onPause() {
         player.onActivityPause()
         super.onPause()
@@ -46,4 +48,12 @@ class MainActivity : AppCompatActivity() {
         player.onActivityDestroy()
         super.onDestroy()
     }
+    //endregion
+
+    //region README.md Handle orientation change
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        player.onConfigurationChanged(newConfig)
+        super.onConfigurationChanged(newConfig)
+    }
+    //endregion
 }
