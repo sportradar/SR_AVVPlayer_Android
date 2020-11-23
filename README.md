@@ -119,7 +119,6 @@ val player = AVVPlayerBuilder(activity)
 ------
 
 ## Chromecast
-------
 ### Create CastOptionsProvider
 ```
 class DemoCastOptionsProvider: AVVCastOptionsProvider() {
