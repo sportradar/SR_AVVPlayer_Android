@@ -49,3 +49,26 @@ val player = AVVPlayerBuilder(context) //your Activity's context
 ```
 player.setup(AVVConfigUrl("https://www.badmintoneurope.tv/api/v2/content/92179/player-setting"))
 ```
+
+### Handle lifecycle events
+
+The AVVPlayer instance needs to react to certain lifecycle events of the application, such as onPause(), onResume() and onDestroy().
+```
+class MainActivity : AppCompatActivity() {
+...
+    override fun onPause() {
+        player.onActivityPause()
+        super.onPause()
+    }
+ 
+    override fun onResume() {
+        player.onActivityResume()
+        super.onResume()
+    }
+ 
+    override fun onDestroy() {
+        player.onActivityDestroy()
+        super.onDestroy()
+    }
+...
+}```
