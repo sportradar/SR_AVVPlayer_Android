@@ -2,7 +2,7 @@ AVVPlayer-MARVIN-Android
 ===================
 #  Developer Guide
 ------
-## Basic Intergration
+## Basic Integration
 ------
 ### Adding AVVPL to your project
 
@@ -96,3 +96,41 @@ override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
     }
 ```
+
+### Changing the player configuration
+
+TODO:  
+-adding request header to streamaccess
+-changing autoplay behavior
+-add heartbeat
+
+## Customizing UI
+------
+### Customize Error Overlay
+
+TODO:
+
+## Chromecast
+------
+### Create CastOptionsProvider
+
+TODO:
+
+### Add the CastOptionsProvider to your AndroidManifest.xml
+
+TODO:
+
+### Initiate CastContext
+
+TODO:
+
+### (Optional) Add a MiniController to your layout
+
+TODO:
+
+===================
+#  Changelog
+------
+
+TODO:
+
