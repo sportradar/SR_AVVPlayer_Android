@@ -1,13 +1,10 @@
 AVVPlayer-MARVIN-Android
 ===================
 #  Developer Guide
-------
 ## Basic Integration
-------
 ### Adding AVVPL to your project
 
 **1. Add the maven repository to your project level build.gradle**
-
 ```
 allprojects {
     repositories {
@@ -21,12 +18,10 @@ allprojects {
 KNOWN ISSUE: Bitmovin Analytics integration demands adding the bitmovin maven repository. Fixing this issue is in progress.
 
 **2. Add the avvpl dependency to your app module build.gradle**
-
 ```
 implementation("ag.sportradar.android:avvplayermarvin:X.X.X")
 ```
 ### Checking for a valid licence
-
 ```
 AVVSettings.instance.initLicence(this,"your_licence_key",
         object : AVVLicenceCheckListener{
@@ -35,9 +30,7 @@ AVVSettings.instance.initLicence(this,"your_licence_key",
 ```
 
 ### Creating the AVVPlayer instance
-
 **1. Instantiate the Player**
-
 ```
 val player = AVVPlayerBuilder(context) //your Activity's context
             .setPlayerContainer(playerContainer) //the viewgroup that contains the player
@@ -45,7 +38,6 @@ val player = AVVPlayerBuilder(context) //your Activity's context
 ```
 
 **2. Start the video passing a Video Configuration to the player**
-
 ```
 player.setup(AVVConfigUrl("https://www.badmintoneurope.tv/api/v2/content/92179/player-setting"))
 ```
@@ -75,11 +67,9 @@ class MainActivity : AppCompatActivity() {
 ```
 
 ### Handle orientation change
-
 In order for the AVVPlayer to continue playback through orientation changes you need to enable configChanges in the Activity that holds the player.
 
 **1. Add the following line to your activtiy in the AndroidManifest.xml**
-
 ```
 <activity
            ..
@@ -89,7 +79,6 @@ In order for the AVVPlayer to continue playback through orientation changes you 
 ```
 
 **2. Override onConfigurationChanged in your Activtiy/Fragment that holds the player**
-
 ```
 override fun onConfigurationChanged(newConfig: Configuration) {
         player.onConfigurationChanged(newConfig)
@@ -124,7 +113,6 @@ val player = AVVPlayerBuilder(activity)
             .setCustomErrorOverlay(MyErrorOverlay())
             .build()
 ```
-
 
 ## Chromecast
 ------
