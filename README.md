@@ -45,16 +45,15 @@ val player = AVVPlayerBuilder(context) //your Activity's context
 ```
 
 **2. Start the video passing a Video Configuration to the player**
-```
+```kotlin
 player.setup(AVVConfigUrl("https://www.badmintoneurope.tv/api/v2/content/92179/player-setting"))
 ```
 
 ### Handle lifecycle events
 
 The AVVPlayer instance needs to react to certain lifecycle events of the application, such as onPause(), onResume() and onDestroy().
-```
+```kotlin
 class MainActivity : AppCompatActivity() {
-...
     override fun onPause() {
         player.onActivityPause()
         super.onPause()
@@ -69,7 +68,6 @@ class MainActivity : AppCompatActivity() {
         player.onActivityDestroy()
         super.onDestroy()
     }
-...
 }
 ```
 
@@ -77,16 +75,15 @@ class MainActivity : AppCompatActivity() {
 In order for the AVVPlayer to continue playback through orientation changes you need to enable configChanges in the Activity that holds the player.
 
 **1. Add the following line to your activtiy in the AndroidManifest.xml**
-```
-<activity
-           ..
-       android:configChanges="orientation|screenSize|screenLayout"
-           ...
+```xml
+<activity 
+    android:configChanges="orientation|screenSize|screenLayout">
+           
 </activity>
 ```
 
 **2. Override onConfigurationChanged in your Activtiy/Fragment that holds the player**
-```
+```kotlin
 override fun onConfigurationChanged(newConfig: Configuration) {
         player.onConfigurationChanged(newConfig)
         super.onConfigurationChanged(newConfig)
@@ -96,47 +93,40 @@ override fun onConfigurationChanged(newConfig: Configuration) {
 ### Changing the player configuration
 
 The player fetches its configuration from the URL that is passed in the setUp() call. The configuration determines the looks and the behavior of the player, however if you wish to change any of this behavior or need to add necessary information to the player configuration you can do so by implementing AVVConfigAdaptationCallback and adding it to the player.setup() call
-```
+```kotlin
 player.setup(config, object : AVVConfigAdaptationCallback() {})
 ```
 
 * **Adding request headers to streamaccess**
-```
+```kotlin
 player.setUp(config, object : AVVConfigAdaptationCallback() {
             override fun adaptConfig(config: AVVConfig) {
-                ...
                 config.streamUrlProviderInfo.requestData = AVVPostRequestData(mapOf(Pair("authorization", "your auth token")))
- 
-                ...
             }
 }
 ```
 
 * **Changing autoplay behavior**
-```
+```kotlin
 player.setUp(config, object : AVVConfigAdaptationCallback() {
              
             override fun adaptConfig(config: AVVConfig) {
-                ...
                 config.streamMetaData.autoPlay = true
-                ...
             }
              
         })
 ```
 * **Add heartbeat**
-```
+```kotlin
 player.setUp(config, object : AVVConfigAdaptationCallback() {
              
             override fun adaptConfig(config: AVVConfig) {
-                ...
                 config.heartbeat = AVVHeartbeat.Builder()
                     .enabled(true)
                     .time(30) //seconds
                     .ticket("your heartbeat ticket")
                     .validationPath("https://yourvalidation.com/validation")
                     .build()
-                ...
             }
              
         })
@@ -147,7 +137,7 @@ player.setUp(config, object : AVVConfigAdaptationCallback() {
 ## Customizing UI
 
 ### Customize Error Overlay
-```
+```kotlin
 class MyErrorOverlay : AVVErrorOverlayDelegate {
     override fun onCreateErrorView(parent: ViewGroup, error: AVVError): View {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -158,7 +148,7 @@ class MyErrorOverlay : AVVErrorOverlayDelegate {
     }
 }
 ```
-```
+```kotlin
 val player = AVVPlayerBuilder(activity)
             .setPlayerContainer(playerContainer)
             .setCustomErrorOverlay(MyErrorOverlay())
@@ -169,7 +159,7 @@ val player = AVVPlayerBuilder(activity)
 
 ## Chromecast
 ### Create CastOptionsProvider
-```
+```kotlin
 class DemoCastOptionsProvider: AVVCastOptionsProvider() {
     override fun getReceiverApplicationId(context: Context): String {
         return "YOUR_CAST_RECEIVER_ID"
@@ -178,9 +168,8 @@ class DemoCastOptionsProvider: AVVCastOptionsProvider() {
 ```
 
 ### Add the CastOptionsProvider to your AndroidManifest.xml
-```
+```xml
     <application>
-        ...
         <meta-data
             android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"
             android:value="ag.sportradar.avvplayerdemo.DemoCastOptionsProvider"
@@ -190,7 +179,7 @@ class DemoCastOptionsProvider: AVVCastOptionsProvider() {
 ```
 
 ### Initiate CastContext
-```
+```kotlin
     class MainActivity : AppCompatActivity() {
         override fun onCreate(savedInstanceState: Bundle?) {
         ...
@@ -200,7 +189,7 @@ class DemoCastOptionsProvider: AVVCastOptionsProvider() {
 ```
 
 ### (Optional) Add a MiniController to your layout
-```
+```xml
     <fragment
         android:id="@+id/miniControllerFragment"
         class="ag.sportradar.avvplayer.player.chromecast.widgets.AVVDefaultCastMiniController"
