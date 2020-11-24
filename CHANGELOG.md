@@ -8,7 +8,7 @@
 * ``` AVVDate.printDate() ``` needs a Locale as second parameter
 * Updates targetSdk to 30
 * User can implement his own ``` AVVAnalyticsDelegate ``` and use it via ```AVVPlayerBuilder.addAnalyticsHandler()```
-* Timebar is not updates when user is scrubbing
+* Timebar is does not update when user is scrubbing
 * DefaultControls are staying visible while user is scrubbing timebar
 * Implements Subtitle Support
   * Subtitles are read from hls file and additional subtitles (vtt files) can be added via PlayerConfig.
