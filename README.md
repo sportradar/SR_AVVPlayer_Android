@@ -30,10 +30,16 @@ The newest Version can be found [here](/CHANGELOG.md)
 
 ### Checking for a valid licence
 ```kotlin
-AVVSettings.instance.initLicence(this,"your_licence_key",
-        object : AVVLicenceCheckListener{
-            override fun onLicenceValidated(valid: Boolean) {}
-        })
+    val licence = AVVLicence.Builder(this, "your licence key")
+                .domain("licence Domain (if required)")
+                .listener(object : AVVLicenceCheckListener {
+                    override fun onLicenceValidated(valid: Boolean) {
+                        // player should not be built before licence is validated.
+                    }
+                })
+                .build()
+
+    AVVSettings.instance.checkLicence(licence)
 ```
 
 ### Creating the AVVPlayer instance
