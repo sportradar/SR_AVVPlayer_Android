@@ -1,9 +1,6 @@
 package ag.sportradar.avvpldemo
 
-import ag.sportradar.avvplayer.config.AVVConfig
-import ag.sportradar.avvplayer.config.AVVConfigAdaptationCallback
-import ag.sportradar.avvplayer.config.AVVConfigUrl
-import ag.sportradar.avvplayer.config.AVVPlayerConfigConvertible
+import ag.sportradar.avvplayer.config.*
 import ag.sportradar.avvplayer.player.AVVPlayer
 import ag.sportradar.avvplayer.player.AVVPlayerBuilder
 import ag.sportradar.avvplayer.task.http.AVVPostRequestData

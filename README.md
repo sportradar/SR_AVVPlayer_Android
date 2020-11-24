@@ -100,8 +100,8 @@ override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
     }
 ```
-
-### Changing the player configuration
+------
+## Changing the player configuration (if required)
 
 The player fetches its configuration from the URL that is passed in the setUp() call. The configuration determines the looks and the behavior of the player, however if you wish to change any of this behavior or need to add necessary information to the player configuration you can do so by implementing AVVConfigAdaptationCallback and adding it to the player.setup() call
 ```kotlin
