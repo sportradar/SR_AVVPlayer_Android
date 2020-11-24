@@ -2,9 +2,10 @@ package ag.sportradar.avvpldemo
 
 import android.content.Context
 import com.google.gson.Gson
-import java.io.IOException
+import org.parceler.Parcel
 import java.io.InputStream
 
+@Parcel
 class DemoConfig private constructor(
     val licenceKey: String,
     val streamUrl: String,
