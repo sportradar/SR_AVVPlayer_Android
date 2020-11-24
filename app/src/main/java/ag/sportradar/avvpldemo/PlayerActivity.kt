@@ -3,32 +3,37 @@ package ag.sportradar.avvpldemo
 import ag.sportradar.avvplayer.config.AVVConfig
 import ag.sportradar.avvplayer.config.AVVConfigAdaptationCallback
 import ag.sportradar.avvplayer.config.AVVConfigUrl
-import ag.sportradar.avvplayer.config.AVVPlayerConfigConvertible
 import ag.sportradar.avvplayer.player.AVVPlayer
 import ag.sportradar.avvplayer.player.AVVPlayerBuilder
 import ag.sportradar.avvplayer.player.licencing.AVVLicenceCheckListener
 import ag.sportradar.avvplayer.player.settings.AVVSettings
 import ag.sportradar.avvplayer.task.http.AVVPostRequestData
+import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class MainActivity : AppCompatActivity() {
+class PlayerActivity : AppCompatActivity() {
 
     lateinit var player: AVVPlayer
-    lateinit var demoConfig: DemoConfig
+
+    companion object {
+        fun start(context: Context, demoConfig: DemoConfig) {
+            val intent = Intent(context, PlayerActivity.javaClass)
+            context.startActivity(intent)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        demoConfig = DemoConfig.fromAssets(this)
         /*README.md Checking for a valid licence */
-        AVVSettings.instance.initLicence(this, demoConfig.licenceKey,
+        AVVSettings.instance.initLicence(this, "your_licence_key",
             object : AVVLicenceCheckListener {
                 override fun onLicenceValidated(valid: Boolean) {}
-            })
+            });
 
         /*README.md Instantiate the Player */
         player = AVVPlayerBuilder(this)
@@ -36,22 +41,14 @@ class MainActivity : AppCompatActivity() {
             .build()
 
         /*README.md Start the video passing a Video Configuration to the player */
-
-        getVideoConfig()?.let { config ->
-            player.setup(config, getConfigAdaptation())
-        }
-    }
-
-    private fun getVideoConfig(): AVVPlayerConfigConvertible? {
-        return when {
-            demoConfig.configUrl.isNotEmpty() -> {
-                AVVConfigUrl(demoConfig.configUrl)
-            }
-            demoConfig.streamUrl.isNotEmpty() -> {
-                AVVConfig.Builder(0).streamUrl(demoConfig.streamUrl).build()
-            }
-            else -> null
-        }
+        player.setup(
+            AVVConfigUrl("https://www.badmintoneurope.tv/api/v2/content/92179/player-setting"),
+            getConfigAdaptation()
+        )
+        player.setup(
+            AVVConfigUrl("https://www.badmintoneurope.tv/api/v2/content/92179/player-setting"),
+            getConfigAdaptation()
+        )
     }
 
 
@@ -62,10 +59,10 @@ class MainActivity : AppCompatActivity() {
             override fun adaptConfig(config: AVVConfig) {
                 /*Adding request headers to streamaccess*/
                 config.streamUrlProviderInfo.requestData =
-                    AVVPostRequestData(mapOf(Pair("authorization", demoConfig.authToken)))
+                    AVVPostRequestData(mapOf(Pair("authorization", "your auth token")))
 
                 /*Changing autoplay behavior*/
-                config.streamMetaData.autoPlay = demoConfig.autoplay
+                config.streamMetaData.autoPlay = true
             }
         }
     }
