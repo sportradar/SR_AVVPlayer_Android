@@ -27,4 +27,15 @@ class DemoConfig private constructor(
             return String(buffer, Charsets.UTF_8)
         }
     }
+
+    fun validate(): List<String> {
+        val errors = mutableListOf<String>()
+        if (licenceKey.isEmpty())
+            errors.add("- Provide a licenceKey.")
+
+        if (streamUrl.isEmpty() && configUrl.isEmpty())
+            errors.add("- Provide either a streamUrl or a OTT video config url")
+
+        return errors
+    }
 }

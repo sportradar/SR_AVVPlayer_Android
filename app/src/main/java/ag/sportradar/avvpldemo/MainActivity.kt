@@ -1,17 +1,12 @@
 package ag.sportradar.avvpldemo
 
-import ag.sportradar.avvplayer.config.AVVConfig
-import ag.sportradar.avvplayer.config.AVVConfigAdaptationCallback
-import ag.sportradar.avvplayer.config.AVVConfigUrl
-import ag.sportradar.avvplayer.config.AVVPlayerConfigConvertible
 import ag.sportradar.avvplayer.player.AVVPlayer
-import ag.sportradar.avvplayer.player.AVVPlayerBuilder
 import ag.sportradar.avvplayer.player.licencing.AVVLicenceCheckListener
 import ag.sportradar.avvplayer.player.settings.AVVSettings
-import ag.sportradar.avvplayer.task.http.AVVPostRequestData
-import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
+import java.lang.StringBuilder
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,75 +17,28 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         demoConfig = DemoConfig.fromAssets(this)
-        /*README.md Checking for a valid licence */
-        AVVSettings.instance.initLicence(this, demoConfig.licenceKey,
-            object : AVVLicenceCheckListener {
-                override fun onLicenceValidated(valid: Boolean) {}
-            })
 
-        /*README.md Instantiate the Player */
-        player = AVVPlayerBuilder(this)
-            .setPlayerContainer(findViewById(R.id.playerContainer))
-            .build()
+        val errors = demoConfig.validate()
 
-        /*README.md Start the video passing a Video Configuration to the player */
-
-        getVideoConfig()?.let { config ->
-            player.setup(config, getConfigAdaptation())
+        if (demoConfigIsValid(errors)) {
+            /*README.md Checking for a valid licence */
+            AVVSettings.instance.initLicence(this, demoConfig.licenceKey,
+                object : AVVLicenceCheckListener {
+                    override fun onLicenceValidated(valid: Boolean) {
+                        PlayerActivity.start(this@MainActivity, demoConfig)
+                        finish()
+                    }
+                })
+        } else {
+            val builder = StringBuilder()
+                .append("Please update /assets/demo_config.json\n")
+            errors.forEach {
+                builder.append("$it\n")
+            }
+            findViewById<TextView>(R.id.message).text = builder.toString()
         }
     }
 
-    private fun getVideoConfig(): AVVPlayerConfigConvertible? {
-        return when {
-            demoConfig.configUrl.isNotEmpty() -> {
-                AVVConfigUrl(demoConfig.configUrl)
-            }
-            demoConfig.streamUrl.isNotEmpty() -> {
-                AVVConfig.Builder(0).streamUrl(demoConfig.streamUrl).build()
-            }
-            else -> null
-        }
-    }
-
-
-    private fun getConfigAdaptation(): AVVConfigAdaptationCallback {
-        /*Changing the player configuration */
-        return object : AVVConfigAdaptationCallback() {
-
-            override fun adaptConfig(config: AVVConfig) {
-                /*Adding request headers to streamaccess*/
-                config.streamUrlProviderInfo.requestData =
-                    AVVPostRequestData(mapOf(Pair("authorization", demoConfig.authToken)))
-
-                /*Changing autoplay behavior*/
-                config.streamMetaData.autoPlay = demoConfig.autoplay
-            }
-        }
-    }
-
-    //region README.md Handle lifecycle events
-    override fun onPause() {
-        player.onActivityPause()
-        super.onPause()
-    }
-
-    override fun onResume() {
-        player.onActivityResume()
-        super.onResume()
-    }
-
-    override fun onDestroy() {
-        player.onActivityDestroy()
-        super.onDestroy()
-    }
-    //endregion
-
-    //region README.md Handle orientation change
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        player.onConfigurationChanged(newConfig)
-        super.onConfigurationChanged(newConfig)
-    }
-    //endregion
+    private fun demoConfigIsValid(validate: List<String>) = validate.isEmpty()
 }

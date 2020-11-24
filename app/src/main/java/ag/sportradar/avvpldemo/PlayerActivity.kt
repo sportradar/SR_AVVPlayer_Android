@@ -3,6 +3,7 @@ package ag.sportradar.avvpldemo
 import ag.sportradar.avvplayer.config.AVVConfig
 import ag.sportradar.avvplayer.config.AVVConfigAdaptationCallback
 import ag.sportradar.avvplayer.config.AVVConfigUrl
+import ag.sportradar.avvplayer.config.AVVPlayerConfigConvertible
 import ag.sportradar.avvplayer.player.AVVPlayer
 import ag.sportradar.avvplayer.player.AVVPlayerBuilder
 import ag.sportradar.avvplayer.player.licencing.AVVLicenceCheckListener
@@ -13,27 +14,30 @@ import android.content.Intent
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcelable
+import org.parceler.Parcels
 
 class PlayerActivity : AppCompatActivity() {
 
     lateinit var player: AVVPlayer
+    lateinit var demoConfig: DemoConfig
 
     companion object {
+
+        const val extraDemoConfig: String = "democonfig"
+
         fun start(context: Context, demoConfig: DemoConfig) {
             val intent = Intent(context, PlayerActivity.javaClass)
+            intent.putExtra(extraDemoConfig, Parcels.wrap(demoConfig))
             context.startActivity(intent)
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_player)
 
-        /*README.md Checking for a valid licence */
-        AVVSettings.instance.initLicence(this, "your_licence_key",
-            object : AVVLicenceCheckListener {
-                override fun onLicenceValidated(valid: Boolean) {}
-            });
+        demoConfig = unwrapDemoConfig()
 
         /*README.md Instantiate the Player */
         player = AVVPlayerBuilder(this)
@@ -41,14 +45,24 @@ class PlayerActivity : AppCompatActivity() {
             .build()
 
         /*README.md Start the video passing a Video Configuration to the player */
-        player.setup(
-            AVVConfigUrl("https://www.badmintoneurope.tv/api/v2/content/92179/player-setting"),
-            getConfigAdaptation()
-        )
-        player.setup(
-            AVVConfigUrl("https://www.badmintoneurope.tv/api/v2/content/92179/player-setting"),
-            getConfigAdaptation()
-        )
+        getVideoConfig()?.let { config -> player.setup(config, getConfigAdaptation()) }
+    }
+
+    private fun getVideoConfig(): AVVPlayerConfigConvertible? {
+        return when {
+            demoConfig.configUrl.isNotEmpty() -> {
+                AVVConfigUrl(demoConfig.configUrl)
+            }
+            demoConfig.streamUrl.isNotEmpty() -> {
+                AVVConfig.Builder(0).streamUrl(demoConfig.streamUrl).build()
+            }
+            else -> null
+        }
+    }
+
+    private fun unwrapDemoConfig(): DemoConfig {
+        val demoConfigParcelable = intent.extras?.get(extraDemoConfig) as Parcelable
+        return Parcels.unwrap(demoConfigParcelable) as DemoConfig
     }
 
 
