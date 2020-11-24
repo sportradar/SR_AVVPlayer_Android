@@ -1,0 +1,5 @@
+//TODO: Add Changelog to README
+//TODO: implement custom error overlay in demo
+//TODO: implement chromecast in erroroverlay
+
+//TODO: move app configuration params to a ressource file (licence key, receiver id, etc)
