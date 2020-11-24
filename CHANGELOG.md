@@ -1,5 +1,8 @@
 #  Changelog
 
+#### 0.11.2
+TODO
+
 #### 0.11.0
 * Fixes Bug that triggered restart of heartbeat when ``` onActivityResume() ``` is called.
 * Via PlayerBuilder the VideoSurfaceType of exoplayer can be changed.
