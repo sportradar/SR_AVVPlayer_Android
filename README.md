@@ -180,7 +180,7 @@ class DemoCastOptionsProvider: AVVCastOptionsProvider() {
     <application>
         <meta-data
             android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"
-            android:value="ag.sportradar.avvplayerdemo.DemoCastOptionsProvider"
+            android:value="path.to.your.AVVCastOptionsProvider"
             tools:replace="android:value" />
  
     </application>
