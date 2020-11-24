@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         /*README.md Checking for a valid licence */
         val licence = AVVLicence.Builder(this, demoConfig.licenceKey)
             .domain(demoConfig.licenceDomain)
+            .bundle(demoConfig.bundle)
             .listener(object : AVVLicenceCheckListener {
                 override fun onLicenceValidated(valid: Boolean) {
                     PlayerActivity.start(this@MainActivity, demoConfig)

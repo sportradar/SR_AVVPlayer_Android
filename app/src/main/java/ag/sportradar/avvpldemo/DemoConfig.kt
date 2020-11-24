@@ -8,6 +8,7 @@ import java.io.Serializable
 class DemoConfig constructor(
     val licenceKey: String,
     val licenceDomain: String,
+    val bundle:String,
     val streamUrl: String,
     val configUrl: String,
     val autoplay: Boolean,

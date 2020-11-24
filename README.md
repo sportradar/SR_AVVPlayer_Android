@@ -32,6 +32,7 @@ The newest Version can be found [here](/CHANGELOG.md)
 ```kotlin
     val licence = AVVLicence.Builder(this, "your licence key")
                 .domain("licence Domain (if required)")
+                .bundle("app bundle")
                 .listener(object : AVVLicenceCheckListener {
                     override fun onLicenceValidated(valid: Boolean) {
                         // player should not be built before licence is validated.
