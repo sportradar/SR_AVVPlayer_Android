@@ -11,7 +11,6 @@ import java.lang.StringBuilder
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var player: AVVPlayer
     lateinit var demoConfig: DemoConfig
 
     override fun onCreate(savedInstanceState: Bundle?) {
