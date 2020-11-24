@@ -69,8 +69,10 @@ class PlayerActivity : AppCompatActivity() {
 
             override fun adaptConfig(config: AVVConfig) {
                 /*Adding request headers to streamaccess*/
-                config.streamUrlProviderInfo.requestData =
-                    AVVPostRequestData(mapOf(Pair("authorization", demoConfig.authToken)))
+                if (demoConfig.authorizationToken.isNotEmpty()) {
+                    config.streamUrlProviderInfo.requestData =
+                        AVVPostRequestData(mapOf(Pair("authorization", demoConfig.authorizationToken)))
+                }
 
                 /*Changing autoplay behavior*/
                 config.streamMetaData.autoPlay = demoConfig.autoplay

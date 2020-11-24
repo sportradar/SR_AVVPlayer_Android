@@ -10,7 +10,7 @@ class DemoConfig constructor(
     val streamUrl: String,
     val configUrl: String,
     val autoplay: Boolean,
-    val authToken: String
+    val authorizationToken: String
 ) : Serializable {
 
     companion object {
