@@ -2,17 +2,17 @@ package ag.sportradar.avvpldemo
 
 import android.content.Context
 import com.google.gson.Gson
-import org.parceler.Parcel
 import java.io.InputStream
+import java.io.Serializable
 
-@Parcel
-class DemoConfig private constructor(
+class DemoConfig constructor(
     val licenceKey: String,
     val streamUrl: String,
     val configUrl: String,
     val autoplay: Boolean,
     val authToken: String
-) {
+) : Serializable {
+
     companion object {
         fun fromAssets(context: Context): DemoConfig {
             return Gson().fromJson(getJsonString(context), DemoConfig::class.java)

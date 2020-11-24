@@ -14,8 +14,6 @@ import android.content.Intent
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Parcelable
-import org.parceler.Parcels
 
 class PlayerActivity : AppCompatActivity() {
 
@@ -27,8 +25,8 @@ class PlayerActivity : AppCompatActivity() {
         const val extraDemoConfig: String = "democonfig"
 
         fun start(context: Context, demoConfig: DemoConfig) {
-            val intent = Intent(context, PlayerActivity.javaClass)
-            intent.putExtra(extraDemoConfig, Parcels.wrap(demoConfig))
+            val intent = Intent(context, PlayerActivity::class.java)
+            intent.putExtra(extraDemoConfig, demoConfig)
             context.startActivity(intent)
         }
     }
@@ -61,8 +59,7 @@ class PlayerActivity : AppCompatActivity() {
     }
 
     private fun unwrapDemoConfig(): DemoConfig {
-        val demoConfigParcelable = intent.extras?.get(extraDemoConfig) as Parcelable
-        return Parcels.unwrap(demoConfigParcelable) as DemoConfig
+        return intent.extras?.get(extraDemoConfig) as DemoConfig
     }
 
 
