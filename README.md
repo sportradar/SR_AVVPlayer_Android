@@ -46,7 +46,17 @@ val player = AVVPlayerBuilder(context) //your Activity's context
 
 **2. Start the video passing a Video Configuration to the player**
 ```kotlin
-player.setup(AVVConfigUrl("https://www.badmintoneurope.tv/api/v2/content/92179/player-setting"))
+player.setup(AVVConfigUrl("OTT video config url"))
+```
+or
+```kotlin
+player.setup(AVVStreamUrl("https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8"))
+```
+or
+```kotlin
+player.setup(AVVConfig.Builder(0)
+                    .streamUrl("https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8")
+                    .build())
 ```
 
 ### Handle lifecycle events
