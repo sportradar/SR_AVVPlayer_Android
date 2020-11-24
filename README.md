@@ -33,7 +33,7 @@ The newest Version can be found [here](/CHANGELOG.md)
 AVVSettings.instance.initLicence(this,"your_licence_key",
         object : AVVLicenceCheckListener{
             override fun onLicenceValidated(valid: Boolean) {}
-        });
+        })
 ```
 
 ### Creating the AVVPlayer instance
@@ -77,8 +77,9 @@ In order for the AVVPlayer to continue playback through orientation changes you 
 **1. Add the following line to your activtiy in the AndroidManifest.xml**
 ```xml
 <activity 
+    android:name=".YourPlayerActivity"
     android:configChanges="orientation|screenSize|screenLayout">
-           
+    ... 
 </activity>
 ```
 
@@ -101,9 +102,11 @@ player.setup(config, object : AVVConfigAdaptationCallback() {})
 ```kotlin
 player.setUp(config, object : AVVConfigAdaptationCallback() {
             override fun adaptConfig(config: AVVConfig) {
+                //...
                 config.streamUrlProviderInfo.requestData = AVVPostRequestData(mapOf(Pair("authorization", "your auth token")))
+                //...
             }
-}
+})
 ```
 
 * **Changing autoplay behavior**
@@ -111,7 +114,9 @@ player.setUp(config, object : AVVConfigAdaptationCallback() {
 player.setUp(config, object : AVVConfigAdaptationCallback() {
              
             override fun adaptConfig(config: AVVConfig) {
+                //...
                 config.streamMetaData.autoPlay = true
+                //...
             }
              
         })
@@ -121,12 +126,15 @@ player.setUp(config, object : AVVConfigAdaptationCallback() {
 player.setUp(config, object : AVVConfigAdaptationCallback() {
              
             override fun adaptConfig(config: AVVConfig) {
+                //...
                 config.heartbeat = AVVHeartbeat.Builder()
                     .enabled(true)
                     .time(30) //seconds
                     .ticket("your heartbeat ticket")
                     .validationPath("https://yourvalidation.com/validation")
                     .build()
+                    
+                 //...
             }
              
         })
@@ -182,9 +190,10 @@ class DemoCastOptionsProvider: AVVCastOptionsProvider() {
 ```kotlin
     class MainActivity : AppCompatActivity() {
         override fun onCreate(savedInstanceState: Bundle?) {
-        ...
+        //...
         CastContext.getSharedInstance(this)
-        ...
+        //...
+    }
     }
 ```
 
