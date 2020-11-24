@@ -30,8 +30,12 @@ class MainActivity : AppCompatActivity() {
             errors.forEach {
                 builder.append("$it\n")
             }
-            findViewById<TextView>(R.id.message).text = builder.toString()
+            showErrorMessage(builder.toString())
         }
+    }
+
+    private fun showErrorMessage(message: String) {
+        findViewById<TextView>(R.id.message).text = message
     }
 
     private fun checkLicence() {
@@ -41,8 +45,12 @@ class MainActivity : AppCompatActivity() {
             .bundle(demoConfig.bundle)
             .listener(object : AVVLicenceCheckListener {
                 override fun onLicenceValidated(valid: Boolean) {
-                    PlayerActivity.start(this@MainActivity, demoConfig)
-                    finish()
+                    if (valid) {
+                        PlayerActivity.start(this@MainActivity, demoConfig)
+                        finish()
+                    } else {
+                        showErrorMessage("You do not own a valid licence, please check licenceKey, licenceDomain and bundle in /assets/demo_config.json")
+                    }
                 }
             })
             .build()
