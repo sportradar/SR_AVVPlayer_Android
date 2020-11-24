@@ -29,7 +29,7 @@ implementation("ag.sportradar.android:avvplayermarvin:X.X.X")
 The newest Version can be found [here](/CHANGELOG.md)
 
 ### Checking for a valid licence
-```
+```kotlin
 AVVSettings.instance.initLicence(this,"your_licence_key",
         object : AVVLicenceCheckListener{
             override fun onLicenceValidated(valid: Boolean) {}
@@ -38,7 +38,7 @@ AVVSettings.instance.initLicence(this,"your_licence_key",
 
 ### Creating the AVVPlayer instance
 **1. Instantiate the Player**
-```
+```kotlin
 val player = AVVPlayerBuilder(context) //your Activity's context
             .setPlayerContainer(playerContainer) //the viewgroup that contains the player
             .build()
