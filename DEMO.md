@@ -11,9 +11,9 @@
   "licenceKey": "", //required
   "licenceDomain": "", //required
   "bundle": "", //required
-  "streamUrl": "https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8", //Direkt streamUrl you want to play
+  "streamUrl": "https://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8", //Direct streamUrl you want to play
   "configUrl": "", //If you'd like to play a video from an OTT videoConfig
-  "autoplay": false,//true or false wether you want the video to start right away or not
+  "autoplay": false, //true or false whether you want the video to start right away or not
   "authorizationToken": "" //only required if you use "configUrl" and the content needs an authorizationToken
 }
 ```

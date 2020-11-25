@@ -52,7 +52,7 @@ val player = AVVPlayerBuilder(context) //your Activity's context
             .build()
 ```
 
-**2. Start the video passing a Video Configuration to the player**
+**2. Start the video passing a video configuration to the player**
 ```kotlin
 player.setup(AVVConfigUrl("[URL to the OTT videoconfig]"))
 ```
@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
 ### Handle orientation change
 In order for the AVVPlayer to continue playback through orientation changes you need to enable configChanges in the Activity that holds the player.
 
-**1. Add the following line to your activtiy in the AndroidManifest.xml**
+**1. Add the following line to your activity in the AndroidManifest.xml**
 ```xml
 <activity 
     android:name=".YourPlayerActivity"
@@ -101,7 +101,7 @@ In order for the AVVPlayer to continue playback through orientation changes you 
 </activity>
 ```
 
-**2. Override onConfigurationChanged in your Activtiy/Fragment that holds the player**
+**2. Override onConfigurationChanged in your Activity/Fragment that holds the player**
 ```kotlin
 override fun onConfigurationChanged(newConfig: Configuration) {
         player.onConfigurationChanged(newConfig)
