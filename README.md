@@ -3,6 +3,7 @@ AVVPlayer-MARVIN-Android
 # Links
 
 * [Changelog](/CHANGELOG.md)
+* [How to use the Demo Application](/DEMO.md)
 
 #  Developer Guide
 ## Basic Integration
