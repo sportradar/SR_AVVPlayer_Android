@@ -5,6 +5,7 @@
 2. Open the project in Android Studio
 3. Go to /assets folder and open "demo_config.json"
 
+
 ```
 {
   "licenceKey": "", //required
