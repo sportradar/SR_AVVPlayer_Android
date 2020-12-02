@@ -1,5 +1,11 @@
 #  Changelog
 
+#### 0.11.3
+* Fixes broken default controllayout when Settings and Chromecast Icons are shown
+* Subtitles are disabled by default, if not specified otherwise by config file
+* Removes seeking to certain position in video after chromecast is loaded
+* Bugfixes and improvements regarding subtitle and audio selection.
+
 #### 0.11.2
 * Bugfixes and improvements regarding Chromecast
 * DVR Window is now maximum per default (before it was limited to 600sec)
