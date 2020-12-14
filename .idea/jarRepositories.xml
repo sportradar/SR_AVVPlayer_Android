@@ -31,5 +31,10 @@
       <option name="name" value="maven" />
       <option name="url" value="https://avvpl-staging.sportradar.com/dist/android/latest/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven3" />
+      <option name="name" value="maven3" />
+      <option name="url" value="https://appsdata.laola1.at/data/maven/android/snapshot" />
+    </remote-repository>
   </component>
 </project>
