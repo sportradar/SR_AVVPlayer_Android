@@ -8,6 +8,9 @@
   * Title for choosing Subtitles and Audiolanguage added in English and German
   * Subtitles are disabled by default, if not specified otherwise by config file
   * Adds support for SRT subtitles.
+* ``` StreamUrlProviderInfo.providerClass ``` can be overwritten in ConfigAdaptation callback
+* StreamUrlProvider returns a map of StreamUrls
+* AVVHttpRequest is not internal anymore
 
 #### 0.11.2
 * Bugfixes and improvements regarding Chromecast
