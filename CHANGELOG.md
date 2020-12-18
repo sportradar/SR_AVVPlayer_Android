@@ -10,7 +10,9 @@
   * Adds support for SRT subtitles.
 * ``` StreamUrlProviderInfo.providerClass ``` can be overwritten in ConfigAdaptation callback
 * StreamUrlProvider returns a map of StreamUrls
+* Player can be restored with a backup stream if a backup stream is returned by StreamUrlProvider
 * AVVHttpRequest is not internal anymore
+* Fixes issue that System UI was still hidden after fullscreenMode is left
 
 #### 0.11.2
 * Bugfixes and improvements regarding Chromecast
