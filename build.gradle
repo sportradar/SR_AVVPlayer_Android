@@ -20,7 +20,6 @@ allprojects {
         jcenter()
         maven { url "https://avvpl-staging.sportradar.com/dist/android/latest/" }
         maven { url 'http://bitmovin.bintray.com/maven' }
-        maven { url "https://appsdata.laola1.at/data/maven/android/snapshot" }
     }
 }
 
