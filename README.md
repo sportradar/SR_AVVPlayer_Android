@@ -181,6 +181,43 @@ val player = AVVPlayerBuilder(activity)
             .build()
 ```
 
+### Customize Control Overlay
+```kotlin
+class MyCustomControls : AVVControlOverlayDelegate {
+    override fun onCreateErrorView(parent: ViewGroup, error: AVVError): View {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val view = layoutInflater.inflate(R.layout.layout_videoplayer_controls, parent, false)
+ 
+         controlBinding.bindPlayPauseButton(
+            view.findViewById(R.id.playPauseButton),
+            R.drawable.ic_avv_play,
+            R.drawable.ic_avv_pause, config.skin
+        )
+
+        controlBinding.bindFullscreenButton(
+            view.findViewById(R.id.fullscreenButton),
+            R.drawable.ic_avv_fullscreen_enter,
+            R.drawable.ic_avv_fullscreen_exit
+        )
+
+        controlBinding.bindLiveIndicatorView(
+            view.findViewById(R.id.liveindicator),
+            R.drawable.ic_avv_live_indicator,
+            config.skin
+        )
+ 
+        // for more bindings check MyCustomControls.kt in DemoApplication
+        return view
+    }
+}
+```
+```kotlin
+val player = AVVPlayerBuilder(activity)
+            .setPlayerContainer(playerContainer)
+            .setControlOverlay(MyCustomControls())
+            .build()
+```
+
 ------
 
 ## Chromecast

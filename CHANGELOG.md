@@ -1,5 +1,19 @@
 #  Changelog
 
+#### 0.11.3
+* Fixes broken default controllayout when Settings and Chromecast Icons are shown
+* Removes seeking to certain position in video after chromecast is loaded
+* Subtitles
+  * Bugfixes and improvements regarding subtitle and audio selection.
+  * Title for choosing Subtitles and Audiolanguage added in English and German
+  * Subtitles are disabled by default, if not specified otherwise by config file
+  * Adds support for SRT subtitles.
+* ``` StreamUrlProviderInfo.providerClass ``` can be overwritten in ConfigAdaptation callback
+* StreamUrlProvider returns a map of StreamUrls
+* Player can be restored with a backup stream if a backup stream is returned by StreamUrlProvider
+* AVVHttpRequest is not internal anymore
+* Fixes issue that System UI was still hidden after fullscreenMode is left
+
 #### 0.11.2
 * Bugfixes and improvements regarding Chromecast
 * DVR Window is now maximum per default (before it was limited to 600sec)
