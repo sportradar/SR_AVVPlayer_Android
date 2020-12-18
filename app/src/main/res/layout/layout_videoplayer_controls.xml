@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/controlBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#4D000000"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.mediarouter.app.MediaRouteButton
+                android:id="@+id/chromecast"
+                style="@style/AVVChromecastButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:mediaRouteTypes="user"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/settingsButton"
+                android:layout_width="@dimen/avv_side_settings_open_close_button"
+                android:layout_height="@dimen/avv_side_settings_open_close_button"
+                android:src="@drawable/ic_avv_settings"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/chromecast"
+                app:layout_constraintEnd_toStartOf="@id/chromecast"
+                app:layout_constraintTop_toTopOf="@id/chromecast"
+                app:tint="@color/avv_white" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/rewindButton"
+            android:layout_width="@dimen/avv_side_center_control_button"
+            android:layout_height="@dimen/avv_side_center_control_button"
+            android:padding="5dp"
+            android:src="@drawable/ic_avv_fast_rewind"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/playPauseButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/playPauseButton"
+            android:layout_width="@dimen/avv_side_center_control_button"
+            android:layout_height="@dimen/avv_side_center_control_button"
+            android:padding="5dp"
+            android:src="@drawable/ic_avv_pause"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/fastForwardButton"
+            android:layout_width="@dimen/avv_side_center_control_button"
+            android:layout_height="@dimen/avv_side_center_control_button"
+            android:padding="5dp"
+            android:src="@drawable/ic_avv_fast_forward"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/playPauseButton"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/mediaProgress"
+            layout="@layout/layout_media_progress" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

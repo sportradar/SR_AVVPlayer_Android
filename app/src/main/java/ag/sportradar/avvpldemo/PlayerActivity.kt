@@ -35,6 +35,7 @@ class PlayerActivity : AppCompatActivity() {
         /*README.md Instantiate the Player */
         player = AVVPlayerBuilder(this)
             .setPlayerContainer(findViewById(R.id.playerContainer))
+            .setControlOverlay(MyCustomControls())
             .build()
 
         /*README.md Start the video passing a Video Configuration to the player */
@@ -66,7 +67,14 @@ class PlayerActivity : AppCompatActivity() {
                 /*Adding request headers to streamaccess*/
                 if (demoConfig.authorizationToken.isNotEmpty()) {
                     config.streamUrlProviderInfo.requestData =
-                        AVVPostRequestData(mapOf(Pair("authorization", demoConfig.authorizationToken)))
+                        AVVPostRequestData(
+                            mapOf(
+                                Pair(
+                                    "authorization",
+                                    demoConfig.authorizationToken
+                                )
+                            )
+                        )
                 }
 
                 /*Changing autoplay behavior*/
