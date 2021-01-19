@@ -1,12 +1,17 @@
 #  Changelog
 
 #### 0.11.4
+#####-SNAPSHOT-b51
 * Bitrate Tracks
   * DefaultControls are showing Tracks to change Bitrate (if AVVQuality is enabled in Config)
-  * New class ``` AVVTracks ``` contains information what language, subtitle and bitrate tracks are available.
-  * ``` AVVPlayerControlsObserver ```: removes ``` onLanguageOptionsAvailable(true|false) ``` 
-  * ``` AVVPlayerControlsObserver ```: adds ``` onTracksChanged([AVVTracks]) ```. Called whenever exoplayer changes tracks. 
-* Adds AVVConfigAssetFile.kt to setup Player with a Config from an AssetFile.
+  * New class ```AVVTracks``` contains information what language, subtitle and bitrate tracks are available.
+  * ```AVVPlayerControlsObserver```: removes ```onLanguageOptionsAvailable(true|false)``` 
+  * ```AVVPlayerControlsObserver```: adds ```onTracksChanged([AVVTracks])```. Called whenever exoplayer changes tracks. 
+* Adds ```AVVConfigAssetFile.kt``` to setup Player with a Config from an AssetFile.
+#####-SNAPSHOT-b51
+* Bugfixes for Endscreen
+  * ```AVVConfigAdaptationCallback``` is passed to videos selected from Endscreen
+  * Fixes double call on ```MediaPlaybackState.ENDED``` that cause Endscreen countdown to start twice. 
 
 #### 0.11.3
 * Fixes broken default controllayout when Settings and Chromecast Icons are shown
