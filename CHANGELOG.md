@@ -8,7 +8,7 @@
   * ```AVVPlayerControlsObserver```: removes ```onLanguageOptionsAvailable(true|false)``` 
   * ```AVVPlayerControlsObserver```: adds ```onTracksChanged([AVVTracks])```. Called whenever exoplayer changes tracks. 
 * Adds ```AVVConfigAssetFile.kt``` to setup Player with a Config from an AssetFile.
-##### -SNAPSHOT-b51
+##### -SNAPSHOT-b52
 * Bugfixes for Endscreen
   * ```AVVConfigAdaptationCallback``` is passed to videos selected from Endscreen
   * Fixes double call on ```MediaPlaybackState.ENDED``` that cause Endscreen countdown to start twice. 
