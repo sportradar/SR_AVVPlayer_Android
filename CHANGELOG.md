@@ -18,6 +18,11 @@
   * ```onTimeBarUpdated(progressMs: Long, durationMs: Long)``` added
   * ```onTimeBarScrubStart(progressMs: Long)``` added
   * ```onTimeBarScrubStop(progressMs: Long)``` added
+##### -SNAPSHOT-b54
+* Changes look of subtitles (no background, black outline and configurable textcolor instead)
+* ```Skin``` class moved to  package ```ag.sportradar.avvplayer.player.skin```
+* Adds ```AVVColor``` as a Color representation class
+  * ```AVVColor``` not only understands hexCode colors but also rgba ("rgba(255, 255, 255, 0.3)") format.
 
 #### 0.11.3
 * Fixes broken default controllayout when Settings and Chromecast Icons are shown
