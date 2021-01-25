@@ -12,6 +12,12 @@
 * Bugfixes for Endscreen
   * ```AVVConfigAdaptationCallback``` is passed to videos selected from Endscreen
   * Fixes double call on ```MediaPlaybackState.ENDED``` that cause Endscreen countdown to start twice. 
+##### -SNAPSHOT-b53
+* Renaming / Adding callbacks to ```AVVPlayerControlsObserver```
+  * ```onPositionSeeked(positionMs: Long)``` removed
+  * ```onTimeBarUpdated(progressMs: Long, durationMs: Long)``` added
+  * ```onTimeBarScrubStart(progressMs: Long)``` added
+  * ```onTimeBarScrubStop(progressMs: Long)``` added
 
 #### 0.11.3
 * Fixes broken default controllayout when Settings and Chromecast Icons are shown
