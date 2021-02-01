@@ -23,6 +23,10 @@
 * ```Skin``` class moved to  package ```ag.sportradar.avvplayer.player.skin```
 * Adds ```AVVColor``` as a Color representation class
   * ```AVVColor``` not only understands hexCode colors but also rgba ("rgba(255, 255, 255, 0.3)") format.
+##### -SNAPSHOT-b55
+* Adds watermark support.
+* Layout of all layers in fullscreen mode is reduced to 16:9 aspect ratio
+* ```AVVColor``` converts all color codes to 8 digit hexcodes (this fixes an issue that 3 digit hexcolors could not be displayed)
 
 #### 0.11.3
 * Fixes broken default controllayout when Settings and Chromecast Icons are shown
