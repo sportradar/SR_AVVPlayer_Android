@@ -27,6 +27,9 @@
 * Adds watermark support.
 * Layout of all layers in fullscreen mode is reduced to 16:9 aspect ratio
 * ```AVVColor``` converts all color codes to 8 digit hexcodes (this fixes an issue that 3 digit hexcolors could not be displayed)
+##### -SNAPSHOT-b65
+* Updates exoplayer to v2.12.3
+* Updates bitmovin analytics to v1.22.0
 
 #### 0.11.3
 * Fixes broken default controllayout when Settings and Chromecast Icons are shown
