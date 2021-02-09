@@ -30,6 +30,14 @@
 ##### -SNAPSHOT-b56
 * Updates exoplayer to v2.12.3
 * Updates bitmovin analytics to v1.22.0
+##### -SNAPSHOT-b57
+* Removes Class ```AVVQualitySettings``` included in ```AVVPlayerSettings```
+  * Set bitrate limitations using ```AVVConfigAdaptationCallback``` overriding ```AVVQuality().maxBitrate```
+* Updates Google IMA Sdk to version 3.22.0
+* Select a custom startpoint in a Video using ```AVVMediaClipping``` in ```AVVConfig().clipping```
+* Redesigns ```AVVDefaultErrorOverlay```
+  * makes class open and adds overridable functions to set error icon and error icon color
+* Adds method ```AVVPlayer().failWith(errorState: StateError)``` to trigger Error Overlay from outside
 
 #### 0.11.3
 * Fixes broken default controllayout when Settings and Chromecast Icons are shown
