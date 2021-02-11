@@ -38,6 +38,13 @@
 * Redesigns ```AVVDefaultErrorOverlay```
   * makes class open and adds overridable functions to set error icon and error icon color
 * Adds method ```AVVPlayer().failWith(errorState: StateError)``` to trigger Error Overlay from outside
+##### -SNAPSHOT-b58
+* Adds ```MediaSessionState.INITIALIZED``` which will be called one time to indicate that everything needed to start the video (e.g. DRM licence, etc) is initialized.
+* Changes in ```AVVAnalyticsDelegate```
+  * renames ```onDetachAnalytics()``` to ```destroyAnalytics()```
+  * removes ```onCreateAnalytics(context: Context?, player: SimpleExoPlayer?, avvAnalytics: AVVAnalyticsData)```
+  * adds ```fun createAnalyticsOnConfigLoaded(context: Context?,player: SimpleExoPlayer?,avvAnalytics: AVVAnalyticsData,config: AVVConfig)```
+  * adds ```fun createAnalyticsOnMediaSessionInitialized(context: Context?,player: SimpleExoPlayer?,avvAnalytics: AVVAnalyticsData,config: AVVConfig)```
 
 #### 0.11.3
 * Fixes broken default controllayout when Settings and Chromecast Icons are shown
