@@ -45,6 +45,9 @@
   * removes ```onCreateAnalytics(context: Context?, player: SimpleExoPlayer?, avvAnalytics: AVVAnalyticsData)```
   * adds ```fun createAnalyticsOnConfigLoaded(context: Context?,player: SimpleExoPlayer?,avvAnalytics: AVVAnalyticsData,config: AVVConfig)```
   * adds ```fun createAnalyticsOnMediaSessionInitialized(context: Context?,player: SimpleExoPlayer?,avvAnalytics: AVVAnalyticsData,config: AVVConfig)```
+##### -SNAPSHOT-b59
+* Adds methods ```AVVPlayer().destroy(killPlaybackThread: Boolean)``` and ```AVVPlayer().onActivityDestroy(killPlaybackThread: Boolean)``` (see integration guide)
+
 
 #### 0.11.3
 * Fixes broken default controllayout when Settings and Chromecast Icons are shown

@@ -89,6 +89,18 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 
+POSSIBLE ISSUE:
+```kotlinplayer.onActivityDestroy()``` calls Exoplayers ```stop()``` and ```release()``` method. 
+As ```release()``` is known for blocking the UI Thread until all resources are released,some 
+devices (especially lowend devices) might appear to freeze for 1-3 seconds. If you are experiencing these issues try calling
+```kotlin
+    override fun onDestroy() {
+        player.onActivityDestroy(killPlaybackThread = false)
+        super.onDestroy()
+    }
+```
+instead
+
 ### Handle orientation change
 In order for the AVVPlayer to continue playback through orientation changes you need to enable configChanges in the Activity that holds the player.
 
