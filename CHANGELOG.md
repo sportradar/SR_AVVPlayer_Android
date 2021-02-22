@@ -47,12 +47,16 @@
   * adds ```fun createAnalyticsOnMediaSessionInitialized(context: Context?,player: SimpleExoPlayer?,avvAnalytics: AVVAnalyticsData,config: AVVConfig)```
 ##### -SNAPSHOT-b59
 * Adds methods ```AVVPlayer().destroy(killPlaybackThread: Boolean)``` and ```AVVPlayer().onActivityDestroy(killPlaybackThread: Boolean)``` (see integration guide)
-
 ##### -SNAPSHOT-b60
 * Fixes issue that when calling ```AVVPlayer().destroy(killPlaybackThread = true)``` audio would still start playing when the player is released too early.
 * Fixes issue that application would crash if the player is released while Config is loading
 * Refactors Endscreen layout to fix layout issues for certain screensizes
 * Renames ```AVVExperimentalSettings``` to ```AVVRendererSettings``` in class ```AVVPlayerSettings```
+##### -SNAPSHOT-b61
+* Changes in ```AVVAnalyticsDelegate```
+  * Adds exoplayer param to ```destroyAnalytics(player: SimpleExoplayer)```
+  * removes ```fun createAnalyticsOnMediaSessionInitialized(context: Context?,player: SimpleExoPlayer?,avvAnalytics: AVVAnalyticsData,config: AVVConfig)```
+  * adds  ```fun createAnalyticsOnStreamUrlProvided(context: Context?,player: SimpleExoPlayer?,avvAnalytics: AVVAnalyticsData,config: AVVConfig)```
 
 #### 0.11.3
 * Fixes broken default controllayout when Settings and Chromecast Icons are shown
