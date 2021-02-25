@@ -34,7 +34,7 @@
 * Removes Class ```AVVQualitySettings``` included in ```AVVPlayerSettings```
   * Set bitrate limitations using ```AVVConfigAdaptationCallback``` overriding ```AVVQuality().maxBitrate```
 * Updates Google IMA Sdk to version 3.22.0
-* Select a custom startpoint in a Video using ```AVVMediaClipping``` in ```AVVConfig().clipping```
+* Select a custom startpoint in a Video using ```AVVMediaClipping``` in ```AVVConfig().clipping``` (remove this)
 * Redesigns ```AVVDefaultErrorOverlay```
   * makes class open and adds overridable functions to set error icon and error icon color
 * Adds method ```AVVPlayer().failWith(errorState: StateError)``` to trigger Error Overlay from outside
@@ -57,6 +57,13 @@
   * Adds exoplayer param to ```destroyAnalytics(player: SimpleExoplayer)```
   * removes ```fun createAnalyticsOnMediaSessionInitialized(context: Context?,player: SimpleExoPlayer?,avvAnalytics: AVVAnalyticsData,config: AVVConfig)```
   * adds  ```fun createAnalyticsOnStreamUrlProvided(context: Context?,player: SimpleExoPlayer?,avvAnalytics: AVVAnalyticsData,config: AVVConfig)```
+##### -SNAPSHOT-b62
+* Moves autoplay field from ```AVVConfig.streamMetaData.autoPlay``` to ```AVVConfig.playbackOptions.autoPlay```
+* Select a custom startpoint in a Video using ```AVVPlaybackOptions``` likw ```AVVConfig.playbackOptions.setStartPosition(position: Long, timeUnit: TimeUnit)```
+* Deprecated following setup() methods in ```AVVPlayer```
+  * ```setup(videoConfigConvertible: AVVPlayerConfigConvertible, initialPlaybackPosition: Long)```
+  * ```setup(videoConfigConvertible: AVVPlayerConfigConvertible,configAdaptationCallback: AVVConfigAdaptationCallback?, initialPlaybackPosition: Long)```
+  * set the initial playposition with ```AVVPlayerbackOptions.setStartPosition(...)``` instead
 
 #### 0.11.3
 * Fixes broken default controllayout when Settings and Chromecast Icons are shown

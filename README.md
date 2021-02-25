@@ -144,7 +144,7 @@ player.setUp(config, object : AVVConfigAdaptationCallback() {
              
             override fun adaptConfig(config: AVVConfig) {
                 //...
-                config.streamMetaData.autoPlay = true
+                config.playbackOptions.autoPlay = true
                 //...
             }
              

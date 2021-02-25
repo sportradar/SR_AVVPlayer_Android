@@ -77,7 +77,7 @@ class PlayerActivity : AppCompatActivity() {
                 }
 
                 /*Changing autoplay behavior*/
-                config.streamMetaData.autoPlay = demoConfig.autoplay
+                config.playbackOptions.autoPlay = demoConfig.autoplay
             }
         }
     }
