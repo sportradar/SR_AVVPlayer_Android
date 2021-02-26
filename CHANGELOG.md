@@ -14,13 +14,13 @@
 #### API additions
 * Adds ```AVVConfigAssetFile.kt``` to setup player with a videoconfig from an assetfile.
 * Adds optional methods ```AVVPlayer().destroy(killPlaybackThread: Boolean)``` and ```AVVPlayer().onActivityDestroy(killPlaybackThread: Boolean)``` (see integration guide).
-* Adds method ```AVVPlayer().failWith(errorState: StateError)``` to trigger Error Overlay from outside.
-* Adds ```AVVColor``` as a Color representation class.
+* Adds method ```AVVPlayer().failWith(errorState: StateError)``` to trigger error from outside.
+* Adds ```AVVColor``` as a color representation class.
   * ```AVVColor``` not only understands hexCode colors but also rgba ("rgba(255, 255, 255, 0.3)") format.
   
 #### API changes/ removals
 * Moves autoplay field from ```AVVConfig.streamMetaData.autoPlay``` to ```AVVConfig.playbackOptions.autoPlay```.
-* Renaming / Adding callbacks to ```AVVPlayerControlsObserver```.
+* Renaming / adding callbacks to ```AVVPlayerControlsObserver```.
   * ```onPositionSeeked(positionMs: Long)``` removed.
   * ```onTimeBarUpdated(progressMs: Long, durationMs: Long)``` added.
   * ```onTimeBarScrubStart(progressMs: Long)``` added.
@@ -32,7 +32,7 @@
   * ```setup(videoConfigConvertible: AVVPlayerConfigConvertible,configAdaptationCallback: AVVConfigAdaptationCallback?, initialPlaybackPosition: Long)```
   * set the initial playposition with ```AVVPlaybackOptions.setStartPosition(position: Long, timeUnit: TimeUnit)``` instead.
 * ```Skin``` class moved to  package ```ag.sportradar.avvplayer.player.skin```.
-* Removes Class ```AVVQualitySettings``` included in ```AVVPlayerSettings```.
+* Removes class ```AVVQualitySettings``` included in ```AVVPlayerSettings```.
   * Set bitrate limitations using ```AVVConfigAdaptationCallback``` overriding ```AVVQuality().maxBitrate```.
 * Renames ```AVVExperimentalSettings``` to ```AVVRendererSettings``` in class ```AVVPlayerSettings```.
   
@@ -55,15 +55,15 @@
   * adds ```destroyAnalytics(player: SimpleExoplayer)```.
   
 #### Bugfixes
-* Fixes issue that application would crash if the player is released while Config is loading
-* Bugfixes for Endscreen
+* Fixes issue that application would crash if the player is released while config is loading
+* Bugfixes for endscreen
   * ```AVVConfigAdaptationCallback``` is passed to videos selected from Endscreen
   * Fixes double call on ```MediaPlaybackState.ENDED``` that cause Endscreen countdown to start twice. 
 
 #### Sdk Updates
 * Updates exoplayer to v2.12.3
 * Updates bitmovin analytics to v1.22.0
-* Updates Google IMA Sdk to version 3.22.0
+* Updates Google IMA sdk to version 3.22.0
 
 
 ### 0.11.3
