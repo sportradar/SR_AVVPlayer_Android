@@ -2,7 +2,7 @@
 
 ### 0.11.4
 
-##### Player Api changes/ additions
+#### Player Api changes/ additions
 * Moves autoplay field from ```AVVConfig.streamMetaData.autoPlay``` to ```AVVConfig.playbackOptions.autoPlay```
 * Adds ```AVVConfigAssetFile.kt``` to setup Player with a Config from an AssetFile.
 * Renaming / Adding callbacks to ```AVVPlayerControlsObserver```
@@ -23,17 +23,17 @@
   * Set bitrate limitations using ```AVVConfigAdaptationCallback``` overriding ```AVVQuality().maxBitrate```
 * Renames ```AVVExperimentalSettings``` to ```AVVRendererSettings``` in class ```AVVPlayerSettings```
   
-##### Playerstates
+#### Playerstates
 * Adds ```MediaSessionState.INITIALIZED``` which will be called one time to indicate that everything needed to start the video (e.g. DRM licence, etc) is initialized.
 
-##### Overlays
+#### Overlays
 * Changes look of subtitles (no background, black outline and configurable textcolor instead)
 * Layout of all layers in fullscreen mode is reduced to 16:9 aspect ratio
 * Redesigns ```AVVDefaultErrorOverlay```
   * makes class open and adds overridable functions to set error icon and error icon color
 * Refactors Endscreen layout to fix layout issues for certain screensizes
   
-##### Analytics
+#### Analytics
 * Changes in ```AVVAnalyticsDelegate```
   * removes ```onCreateAnalytics(context: Context?, player: SimpleExoPlayer?, avvAnalytics: AVVAnalyticsData)```
   * adds ```fun createAnalyticsOnConfigLoaded(context: Context?,player: SimpleExoPlayer?,avvAnalytics: AVVAnalyticsData,config: AVVConfig)```
@@ -41,7 +41,7 @@
   * removes ```onDetachAnalytics()```
   * adds ```destroyAnalytics(player: SimpleExoplayer)```
   
-##### New features
+#### New features
 * Select a custom startingpoint in a Video using ```AVVPlaybackOptions``` like ```AVVConfig.playbackOptions.setStartPosition(position: Long, timeUnit: TimeUnit)```
 * Bitrate Tracks
   * DefaultControls are showing Tracks to change Bitrate (if AVVQuality is enabled in Config)
@@ -49,12 +49,12 @@
   * ```AVVPlayerControlsObserver```: removes ```onLanguageOptionsAvailable(true|false)``` 
   * ```AVVPlayerControlsObserver```: adds ```onTracksChanged([AVVTracks])```. Called whenever exoplayer changes tracks. 
 * Adds watermark overlay.
-##### Sdk Updates
+#### Sdk Updates
 * Updates exoplayer to v2.12.3
 * Updates bitmovin analytics to v1.22.0
 * Updates Google IMA Sdk to version 3.22.0
 
-##### Bugfixes
+#### Bugfixes
 * Fixes issue that application would crash if the player is released while Config is loading
 * Bugfixes for Endscreen
   * ```AVVConfigAdaptationCallback``` is passed to videos selected from Endscreen
