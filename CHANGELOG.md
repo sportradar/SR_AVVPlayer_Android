@@ -3,7 +3,9 @@
 ### 0.11.4
 
 #### New features
-* Select a position a VOD should start at by using ```AVVPlaybackOptions``` like ```AVVConfig.playbackOptions.setStartPosition(position: Long, timeUnit: TimeUnit)```
+* Select a position a VOD should start by:
+   * using ```AVVPlaybackOptions``` like ```AVVConfig.playbackOptions.setStartPosition(position: Long, timeUnit: TimeUnit)```
+   * or setting ```{"desiredStartTime": [int] }``` (value in seconds) in configfile.
 * Bitrate track selection: 
   * DefaultControls are showing Tracks to change Bitrate (if ```AVVQuality``` is enabled in config).
   * New class ```AVVTracks``` contains information what language, subtitle and bitrate tracks are available.
