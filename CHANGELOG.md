@@ -2,14 +2,23 @@
 
 ### 0.11.4
 
-#### Player Api additions
+#### New features
+* Select a position a VOD should start at by using ```AVVPlaybackOptions``` like ```AVVConfig.playbackOptions.setStartPosition(position: Long, timeUnit: TimeUnit)```
+* Bitrate track selection: 
+  * DefaultControls are showing Tracks to change Bitrate (if ```AVVQuality``` is enabled in config).
+  * New class ```AVVTracks``` contains information what language, subtitle and bitrate tracks are available.
+  * ```AVVPlayerControlsObserver```: removes ```onLanguageOptionsAvailable(true|false)```.
+  * ```AVVPlayerControlsObserver```: adds ```onTracksChanged([AVVTracks])```. Called whenever exoplayer changes tracks. 
+* Adds watermark overlay.
+
+#### API additions
 * Adds ```AVVConfigAssetFile.kt``` to setup player with a videoconfig from an assetfile.
 * Adds optional methods ```AVVPlayer().destroy(killPlaybackThread: Boolean)``` and ```AVVPlayer().onActivityDestroy(killPlaybackThread: Boolean)``` (see integration guide).
 * Adds method ```AVVPlayer().failWith(errorState: StateError)``` to trigger Error Overlay from outside.
 * Adds ```AVVColor``` as a Color representation class.
   * ```AVVColor``` not only understands hexCode colors but also rgba ("rgba(255, 255, 255, 0.3)") format.
   
-#### Player Api changes/ removals
+#### API changes/ removals
 * Moves autoplay field from ```AVVConfig.streamMetaData.autoPlay``` to ```AVVConfig.playbackOptions.autoPlay```.
 * Renaming / Adding callbacks to ```AVVPlayerControlsObserver```.
   * ```onPositionSeeked(positionMs: Long)``` removed.
@@ -45,25 +54,17 @@
   * removes ```onDetachAnalytics()```.
   * adds ```destroyAnalytics(player: SimpleExoplayer)```.
   
-#### New features
-* Select a position a VOD should start at by using ```AVVPlaybackOptions``` like ```AVVConfig.playbackOptions.setStartPosition(position: Long, timeUnit: TimeUnit)```
-* Bitrate track selection: 
-  * DefaultControls are showing Tracks to change Bitrate (if ```AVVQuality``` is enabled in config).
-  * New class ```AVVTracks``` contains information what language, subtitle and bitrate tracks are available.
-  * ```AVVPlayerControlsObserver```: removes ```onLanguageOptionsAvailable(true|false)```.
-  * ```AVVPlayerControlsObserver```: adds ```onTracksChanged([AVVTracks])```. Called whenever exoplayer changes tracks. 
-* Adds watermark overlay.
+#### Bugfixes
+* Fixes issue that application would crash if the player is released while Config is loading
+* Bugfixes for Endscreen
+  * ```AVVConfigAdaptationCallback``` is passed to videos selected from Endscreen
+  * Fixes double call on ```MediaPlaybackState.ENDED``` that cause Endscreen countdown to start twice. 
 
 #### Sdk Updates
 * Updates exoplayer to v2.12.3
 * Updates bitmovin analytics to v1.22.0
 * Updates Google IMA Sdk to version 3.22.0
 
-#### Bugfixes
-* Fixes issue that application would crash if the player is released while Config is loading
-* Bugfixes for Endscreen
-  * ```AVVConfigAdaptationCallback``` is passed to videos selected from Endscreen
-  * Fixes double call on ```MediaPlaybackState.ENDED``` that cause Endscreen countdown to start twice. 
 
 ### 0.11.3
 * Fixes broken default controllayout when Settings and Chromecast Icons are shown
