@@ -35,7 +35,6 @@ class PlayerActivity : AppCompatActivity() {
         /*README.md Instantiate the Player */
         player = AVVPlayerBuilder(this)
             .setPlayerContainer(findViewById(R.id.playerContainer))
-            .setControlOverlay(MyCustomControls())
             .build()
 
         /*README.md Start the video passing a Video Configuration to the player */
@@ -78,7 +77,7 @@ class PlayerActivity : AppCompatActivity() {
                 }
 
                 /*Changing autoplay behavior*/
-                config.streamMetaData.autoPlay = demoConfig.autoplay
+                config.playbackOptions.autoPlay = demoConfig.autoplay
             }
         }
     }
