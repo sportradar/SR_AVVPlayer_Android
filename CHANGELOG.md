@@ -1,5 +1,16 @@
 #  Changelog
 
+### 0.11.5
+
+#### SNAPSHOT-b74
+* Changes in ```AVVAnalyticsDelegate```:
+  * adds ```onAVVError(context: Context?,simpleExoPlayer: SimpleExoPlayer?,analyticsData: AVVAnalyticsData,error: AVVError)```.
+  * removes  ```fun createAnalyticsOnStreamUrlProvided(context: Context?,player: SimpleExoPlayer?,avvAnalytics: AVVAnalyticsData,config: AVVConfig)```.
+  * adds  ```fun createAnalyticsOnStreamUrlProvided(context: Context?,simpleExoPlayer: SimpleExoPlayer?, analyticsData: AVVAnalyticsData, config: AVVConfig, streamUrl: String)```.
+
+  
+
+
 ### 0.11.4
 
 #### New features
