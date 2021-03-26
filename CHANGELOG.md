@@ -8,7 +8,9 @@
   * removes  ```fun createAnalyticsOnStreamUrlProvided(context: Context?,player: SimpleExoPlayer?,avvAnalytics: AVVAnalyticsData,config: AVVConfig)```.
   * adds  ```fun createAnalyticsOnStreamUrlProvided(context: Context?,simpleExoPlayer: SimpleExoPlayer?, analyticsData: AVVAnalyticsData, config: AVVConfig, streamUrl: String)```.
 
-  
+#### SNAPSHOT-b75
+* Fixes unsafe call to RemoteMediaClient in ExpandedController
+* Possibly fixes ConcurrentModificationException when removing Listeners from ```AVVCastConnection```  
 
 
 ### 0.11.4
