@@ -23,6 +23,10 @@
 * Fixes Bug that Prerolls would be played again after restoring the player after an error.
 * Replaying a stream will start the stream from its "desiredStartTime"
 
+#### SNAPSHOT-b77
+TODO
+Fix 1 failed unittest for build77
+
 
 
 ### 0.11.4
