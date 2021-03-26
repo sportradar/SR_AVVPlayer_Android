@@ -12,6 +12,18 @@
 * Fixes unsafe call to RemoteMediaClient in ExpandedController
 * Possibly fixes ConcurrentModificationException when removing Listeners from ```AVVCastConnection```  
 
+#### SNAPSHOT-b76
+* Updates Exoplayer to v. 2.13.2
+* Removes MediaCodecOperation Modes and updates RendererSettings for new Exoplayer Version.
+* ```AVVPlayerBuilder.setPlayerContainer()``` accepts optional ViewGroup.
+* Removes deprecated ```AVVPlayer.setup()``` methods containing  ```initialPlaybackPosition```.
+* Adds ```InitState.PLAYER_DESTROYED``` to indicated when the player instance can not be used anymore.
+* Fixes Bug that cause the FullscreenView to close on rotation when the player is in ```presentationModeOnly```
+* Fixes Bug that Player could not be restored at the position an error occured.
+* Fixes Bug that Prerolls would be played again after restoring the player after an error.
+* Replaying a stream will start the stream from its "desiredStartTime"
+
+
 
 ### 0.11.4
 
