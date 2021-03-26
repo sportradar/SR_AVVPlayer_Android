@@ -24,8 +24,7 @@
 * Replaying a stream will start the stream from its "desiredStartTime"
 
 #### SNAPSHOT-b77
-TODO
-Fix 1 failed unittest for build77
+TODO changelog for trackProgressFeature and all refactoring going with it.
 
 
 
