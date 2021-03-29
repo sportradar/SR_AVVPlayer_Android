@@ -24,7 +24,19 @@
 * Replaying a stream will start the stream from its "desiredStartTime"
 
 #### SNAPSHOT-b77
-TODO changelog for trackProgressFeature and all refactoring going with it.
+* Introduces ```AVVStreamType``` enum containing ```AVVStreamType.LIVE``` and ```AVVStreamType.VOD```
+* Replaces ```AVVStreamMetaData().isLiveStream``` with ```AVVStreamMetaData().streamType```
+* Changes in ```AVVPreviewOverlayDelegate```
+   * Renaming ```AVVPreviewCallback().playVideo()``` to ```ÀVVPreviewCallback.finishPreview()```
+* Track Progress Feature
+   * Adds ```AVVResumeOverlayDelegate``` interface to implement your own ResumeOptionsLayer Design
+   * ```AVVResumeOverlayDelegate``` can be added to player via ```AVVPlayerBuilder().setCustomResumeOverlay()```
+* ```MediaControllable``` interface
+   * Adds ```seekToUnixTimeStamp(unixTimeStampMs)``` to seek to a certain Timestamp in a Livestream
+   * Removes ```seekToTimebarPosition()```
+* ```AVVPlaybackOptions``` 
+   * removes ```startPositionMs``` of Type Long
+   * replaces it with ```playPosition``` of Type ```PlayPosition```
 
 
 
