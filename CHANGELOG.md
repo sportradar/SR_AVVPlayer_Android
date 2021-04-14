@@ -39,18 +39,27 @@
    * replaces it with ```playPosition``` of Type ```PlayPosition```
 
 #### SNAPSHOT-b78
-* Updates Bitmovin Analytivs to v 1.22.1
+* Updates Bitmovin Analytics to v 1.22.1
 
 #### SNAPSHOT-b79
 * Changes to Heartbeat
    * Set Time to Heartbeat with a TimeUnit ```Heartbeat().setTime(time: Long, unit: TimeUnit )``` (same for heartbeat builder)
    * Add a radomized Timerange to heartbeat time eg.
-      * ```.setTime(5, 1, TimeUnit.MINUTES)``` --> Time will be random between 4 and 6 Minutes (in Seconds)
+      * ~~```.setTime(5, 1, TimeUnit.MINUTES)``` --> Time will be random between 4 and 6 Minutes (in Seconds)~~
 * Dependency Updates
    * Google IMA -> 3.22.3
    * Gson -> 2.8.6
    * Jodatime -> 2.10.6
    * MediaRouter -> 1.2.2
+   
+#### SNAPSHOT-b80
+* Changes to Heartbeat
+   * Add a radomized Timerange to heartbeat time eg.
+      * ```.setTime(5, 1, TimeUnit.MINUTES)``` --> Time will be random between 5 and 6 Minutes (in Seconds)
+      
+#### SNAPSHOT-b81
+* Updates Bitmovin Analytics to v 2.0.0-beta1
+
 
 ### 0.11.4
 
