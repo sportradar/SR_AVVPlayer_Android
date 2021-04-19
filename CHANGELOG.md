@@ -60,6 +60,20 @@
 #### SNAPSHOT-b81
 * Updates Bitmovin Analytics to v 2.0.0-beta1
 
+#### SNAPSHOT-b82
+* Changes to Heartbeat
+    * Fixes heartbeat cancel being called multiple Times.
+  
+#### SNAPSHOT-b83
+* DRM Changes
+    * Support BuyDrm additionally to verimatrix drm
+    * streamAccess supports field streamAccessUrlDash for Dash/Widewinecontent
+
+#### SNAPSHOT-b84
+* Analytics are disabled per default
+    * for enabling analytics set ```AVVConfig().analytics.enabled = true```
+    * streamAccess supports field streamAccessUrlDash for Dash/Widewinecontent
+
 
 ### 0.11.4
 
