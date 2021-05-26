@@ -73,7 +73,10 @@
 * Analytics are disabled per default
     * for enabling analytics set ```AVVConfig().analytics.enabled = true```
     * streamAccess supports field streamAccessUrlDash for Dash/Widewinecontent
-
+    
+#### SNAPSHOT-b85
+* printin codec, framerate and videosize to logcat when tracks are changed
+* prints drm licence headers to logcat
 
 ### 0.11.4
 
