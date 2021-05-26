@@ -78,6 +78,13 @@
 * printin codec, framerate and videosize to logcat when tracks are changed
 * prints drm licence headers to logcat
 
+#### SNAPSHOT-b86
+* using config field ```controlBarHideDelay``` to configure after how many seconds controls are hidden
+* Fixes bug that countdowns in preview and endscreen view would not stop when lifecycle is paused.
+* Heartbeat only validated after fist interval (not right after init)
+* Updates exoplayer to v 2.13.3
+* ```AVVColor``` is now able to parse rgb string like "rgb(255,255,255)" 
+
 ### 0.11.4
 
 #### New features
