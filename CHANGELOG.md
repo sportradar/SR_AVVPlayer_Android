@@ -85,7 +85,7 @@
 * Updates exoplayer to v 2.13.3
 * ```AVVColor``` is now able to parse rgb string like "rgb(255,255,255)" 
 
-#### SNAPSHOT-b86
+#### SNAPSHOT-b87
 * Implements VOD Premiere Feature
     * Adds distributionType to ```AVVStreamMetaData``` of Type ```AVVStreamType```
 
