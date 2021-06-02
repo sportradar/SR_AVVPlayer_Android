@@ -138,6 +138,20 @@ player.setUp(config, object : AVVConfigAdaptationCallback() {
 })
 ```
 
+* **Enabling / disabling analytics**
+
+Analtics are disabled per default. In order to enable them add the following line to your config adaptation.
+
+```kotlin
+player.setUp(config, object : AVVConfigAdaptationCallback() {
+            override fun adaptConfig(config: AVVConfig) {
+                //...
+                config.analytics.enabled = true
+                //...
+            }
+})
+```
+
 * **Changing autoplay behavior**
 ```kotlin
 player.setUp(config, object : AVVConfigAdaptationCallback() {
