@@ -88,6 +88,11 @@
 #### SNAPSHOT-b87
 * Implements VOD Premiere Feature
     * Adds distributionType to ```AVVStreamMetaData``` of Type ```AVVStreamType```
+    
+#### SNAPSHOT-b88
+* Increases minSdk to 21
+* Updates exoplayer to 2.14.0
+* Adds increases timeout for all http requests to 30 seconds  
 
 ### 0.11.4
 
