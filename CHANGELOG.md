@@ -94,6 +94,11 @@
 * Updates exoplayer to 2.14.0
 * Adds increases timeout for all http requests to 30 seconds  
 
+#### SNAPSHOT-b89
+* Adds TYPE_REMOTE error to exoplayer errors.
+* Updates error messages and technical error messages
+* Adds Error 101 (config error) when drm url in config is invalid
+
 ### 0.11.4
 
 #### New features
