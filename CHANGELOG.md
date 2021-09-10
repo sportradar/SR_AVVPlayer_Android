@@ -99,6 +99,24 @@
 * Updates error messages and technical error messages
 * Adds Error 101 (config error) when drm url in config is invalid
 
+#### SNAPSHOT-b90
+* Updates exoplayer to 2.14.1
+* Fixes crash that could potentially occur in Stream Metadata parsing
+* AVVConfig contains raw json string of its configuration.
+
+#### SNAPSHOT-b91
+* Updates exoplayer to 2.14.2
+* Fixes technical error messages
+
+#### SNAPSHOT-b92
+* Adds ```addManifestObserver(observer: AVVManifestObserver)``` and ```removeManifestObserver(observer: AVVManifestObserver)``` to AVVPlayer class in order to observe Exoplayer downloading stream manifests.
+
+#### SNAPSHOT-b93
+* WARNING: Bitmovin SKD broken with used exoplayer version.
+#### SNAPSHOT-b94
+* WARNING: Bitmovin SKD broken with used exoplayer version.
+
+
 ### 0.11.4
 
 #### New features
