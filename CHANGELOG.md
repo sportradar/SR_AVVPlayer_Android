@@ -1,5 +1,23 @@
 #  Changelog
 
+### 0.11.4.5
+* Updates exoplayer to 2.16.1 (fixing crashes caused by incompatibility with bitmovin version 2.4.0 )
+
+### 0.11.4.4
+* Encodes streamUrl before playback (fixing rare occurrences of invalid streamurl errors)
+
+### 0.11.4.3
+
+* updates compileSdkVersion to 31
+* updates cast framework to v 21.0.1 (fixes chromecast incompatibility with Android 12)
+
+### 0.11.4.1
+
+* removes jCenter() repository and adds mavenCentral() instead.
+* updates exoplayer to v2.13.3 (oldest version available on google maven repo)
+* updates bitmovin exoplayer collector to v2.4.0
+
+
 ### 0.11.4
 
 #### New features
